@@ -1,3 +1,20 @@
+const pageLoad = new Promise(resolve => {
+  window.addEventListener('load', resolve);
+});
+/**
+* Promise that resolves after 2 seconds.
+*/
+const delayTimeout = new Promise(resolve => {
+setTimeout(resolve, 1500);
+});
+/**
+* Wait for both the pageLoad and delayTimeout to resolve.
+*/
+Promise.all([pageLoad, delayTimeout]).then(() => {
+// Show page.
+$(".loader-wrapper").fadeOut("slow");
+});
+
 //Get all the images
 image_array = [
   '1.png',
